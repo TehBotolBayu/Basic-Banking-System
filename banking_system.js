@@ -1,9 +1,40 @@
+class DataNasabah{
+    constructor(nama, pekerjaan, nik, kelamin, usia){
+        this.nama = nama;
+        this.pekerjaan = pekerjaan;
+        this.nik = nik;
+        this.kelamin = kelamin;
+        this.usia = usia;
+    }
+    get_data_diri(){
+        console.log("Nama: "+this.nama);
+        console.log("Pekerjaan: "+this.pekerjaan);
+        console.log("NIK: "+this.nik);
+        console.log("Kelamin: "+this.kelamin);
+        console.log("Usia: "+this.usia);
+    }
+    set_nama(nama){
+        this.nama = nama;
+    }
+    set_pekerjaan(pekerjaan){
+        this.pekerjaan = pekerjaan;
+    }
+    set_nik(nik){
+        this.nik = nik;
+    }
+    set_kelamin(kelamin){
+        this.kelamin = kelamin;
+    }
+    set_usia(usia){
+        this.usia = usia;
+    }
+}
 
-class BankAccount{
+class BankAccount extends DataNasabah{
     #pin;
     #saldo;
-    constructor(nama, rekening, pin, saldo){
-        this.nama = nama;
+    constructor(nama, pekerjaan, nik, kelamin, usia, rekening, pin, saldo){
+        super(nama, pekerjaan, nik, kelamin, usia);
         this.rekening = rekening;
         this.#pin = pin;
         this.#saldo = saldo;
@@ -38,7 +69,14 @@ class BankAccount{
             console.log('Transaksi berhasil, saldo anda saat ini: '+this.#saldo);
         }, 500)
     }
+    ubah_pin(pin, pinbaru){
+        if(pin != this.#pin){
+            return console.log('PIN anda salah');
+        }
+        this.#pin = pinbaru;
+    }
     get_saldo(){
         console.log('saldo anda: '+this.#saldo);
     }
 }
+
